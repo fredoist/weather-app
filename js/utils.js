@@ -1,3 +1,11 @@
+import {
+  cloudy,
+  drizzle,
+  foggy,
+  overcast,
+  rainy,
+  sunny,
+} from './condition-codes.js'
 import { config } from './config.js'
 
 /**
@@ -65,4 +73,32 @@ export const useLanguage = async () => {
 export const render = app => {
   $('#app').innerHTML = null
   $('#app').appendChild(app)
+}
+
+/**
+ * It returns a string with the gradient stops depending on the weather condition
+ * @returns {string} A string that is a CSS variable.
+ */
+export const generateGradient = condition => {
+  const { code, icon } = condition
+  const isDay = icon.includes('day')
+
+  switch (true) {
+    case sunny.includes(code):
+      if (isDay) {
+        return '--from: var(--orange); --to: var(--yellow)'
+      } else {
+        return `--gradient: linear-gradient(to right, #0f0c29, #302b63, #24243e)`
+      }
+    case rainy.includes(code) || cloudy.includes(code):
+      return '--from: var(--navy); --to: var(--blue)'
+    case drizzle.includes(code):
+      return '--from: var(--blue); --to: var(--teal)'
+    case overcast.includes(code):
+      return '--from: var(--navy); --to: var(--teal)'
+    case foggy.includes(code):
+      return '--from: var(--navy); --to: var(--olive)'
+    default:
+      return '--from: var(--blue); --to: var(--aqua)'
+  }
 }
