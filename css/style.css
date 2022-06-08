@@ -10,10 +10,109 @@
   --black: #111111;
 }
 
+html,
 body {
-  background: var(--white);
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(to bottom, var(--blue) 0%, var(--aqua) 70%);
   color: var(--black);
   font-family: 'Fira Mono', Verdana, Geneva, Tahoma, sans-serif;
   font-size: 16px;
   line-height: 1.5;
+}
+
+.temperature {
+  display: block;
+  font-size: 4em;
+  font-weight: 500;
+}
+
+.condition {
+  display: block;
+  font-size: 1.5em;
+}
+
+.location {
+  display: block;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.location::after {
+  background-color: var(--black);
+  content: '';
+  display: block;
+  height: 2px;
+  margin-bottom: 0.75rem;
+  width: 30%;
+}
+
+.date {
+  display: block;
+  font-size: 2.25em;
+}
+
+.time {
+  display: block;
+  margin-bottom: 2.5rem;
+}
+
+.stats {
+  column-gap: 0.25rem;
+  display: inline-flex;
+  margin-right: 0.75rem;
+}
+
+.details {
+  background-color: var(--white);
+  bottom: 0;
+  box-sizing: border-box;
+  left: 0;
+  padding: 3rem;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.details::before {
+  background-image: url('/img/clouds.svg');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 100%;
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: translateY(-100%);
+  width: 100%;
+  z-index: -1;
+}
+
+.weather {
+  box-sizing: border-box;
+  color: var(--white);
+  padding: 7.5rem 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 40rem) {
+  .weather {
+    padding: 3rem;
+  }
+
+  .details {
+    left: auto;
+    right: 0;
+    top: 0;
+    width: 50%;
+  }
+
+  .details::before {
+    transform: translateX(-100%);
+    width: 100%;
+  }
 }
