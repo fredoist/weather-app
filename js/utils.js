@@ -45,10 +45,24 @@ export const useLocation = async () => {
 }
 
 /**
+ * It returns the user's language, or 'en' if it can't find it
+ * @returns {Promise<string>} A promise that resolves to the language of the browser.
+ */
+export const useLanguage = async () => {
+  return new Promise(resolve => {
+    if (navigator.language) {
+      resolve(navigator.language.split('-')[0])
+    } else {
+      resolve('en')
+    }
+  })
+}
+
+/**
  * It takes a component and renders it to the DOM
  * @param {object} app - The app component that we want to render.
  */
-export const render = (app) => {
+export const render = app => {
   $('#app').innerHTML = null
   $('#app').appendChild(app)
 }
