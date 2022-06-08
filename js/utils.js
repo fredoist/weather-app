@@ -22,7 +22,8 @@ export const $ = selector => document.querySelector(selector)
  * @returns {Promise<Object<string,any>>} The data is being returned as a JSON object.
  */
 export const fetcher = async location => {
-  const data = await fetch(`${config.ApiUrl}?q=${location}`, {
+  const language = await useLanguage()
+  const data = await fetch(`${config.ApiUrl}?q=${location}&lang=${language}`, {
     method: 'GET',
     headers: {
       'X-RapidAPI-Host': config.ApiHost,

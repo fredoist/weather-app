@@ -14,8 +14,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   const location = window.location.search
     ? new URL(window.location).searchParams.get('q')
     : await useLocation()
+  history.pushState(null, null, `?q=${location}`)
   const language = await useLanguage()
-  const observable = SWR(`${location}&lang=${language}`, fetcher)
+  const observable = SWR(location, fetcher)
   observable.watch(({ data }) => {
     if (data) {
       const { location, current } = data
