@@ -1,5 +1,6 @@
 import SWR from 'https://esm.sh/vanilla-swr?pin=v85'
 import html from 'https://esm.sh/nanohtml?pin=v85'
+import rain from 'https://esm.sh/make-it-rain-js?pin=v85'
 import { fetcher, render, useLanguage, useLocation } from './utils.js'
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   observable.watch(({ data }) => {
     if (data) {
       const { location, current } = data
+      current.condition.text.includes('rain') && rain().startAnimation()
 
       const stats = [
         { icon: 'wind', value: `${current.wind_mph} mph` },
