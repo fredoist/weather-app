@@ -75,7 +75,7 @@ body {
   padding: 3rem;
   position: absolute;
   width: 100%;
-  z-index: 1;
+  z-index: 40;
 }
 
 .details::before {
@@ -90,7 +90,6 @@ body {
   top: 0;
   transform: translateY(-100%);
   width: 100%;
-  z-index: -1;
 }
 
 .weather {
@@ -98,12 +97,13 @@ body {
   color: var(--white);
   padding: 7.5rem 3rem;
   position: relative;
-  z-index: 2;
+  z-index: 50;
 }
 
 @media (min-width: 40rem) {
   .weather {
     padding: 3rem;
+    width: 50%;
   }
 
   .details {

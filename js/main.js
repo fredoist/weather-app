@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   observable.watch(({ data }) => {
     if (data) {
       const { location, current } = data
-      if([...rainy, ...drizzle].includes(current.condition.code)) {
+      if ([...rainy, ...drizzle].includes(current.condition.code)) {
         rain().startAnimation()
       }
 
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const stats = [
         { icon: 'wind', value: `${current.wind_mph} mph` },
         { icon: 'humidity', value: `${current.humidity}%` },
-        { icon: 'pressure', value: `${current.pressure_mb} mb` },
+        { icon: 'pressure', value: `${current.pressure_in} in` },
       ]
 
       const App = html`
