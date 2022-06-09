@@ -86,20 +86,28 @@ export const generateGradient = condition => {
 
   switch (true) {
     case sunny.includes(code):
-      if (isDay) {
-        return '--from: var(--orange); --to: var(--yellow)'
-      } else {
-        return `--gradient: linear-gradient(to right, #0f0c29, #302b63, #24243e)`
-      }
+      return isDay
+        ? '--from: var(--orange); --to: var(--yellow)'
+        : `--from: var(--navy); --to: var(--blue)`
     case rainy.includes(code) || cloudy.includes(code):
-      return '--from: var(--navy); --to: var(--blue)'
+      return isDay
+        ? '--from: var(--blue); --to: var(--aqua)'
+        : `--from: var(--navy); --to: var(--blue)`
     case drizzle.includes(code):
-      return '--from: var(--blue); --to: var(--teal)'
+      return isDay
+        ? '--from: var(--blue); --to: var(--teal)'
+        : `--from: var(--navy); --to: var(--teal)`
     case overcast.includes(code):
-      return '--from: var(--navy); --to: var(--teal)'
+      return isDay
+        ? '--from: var(--navy); --to: var(--teal)'
+        : '--from: var(--navy); --to: var(--olive)'
     case foggy.includes(code):
-      return '--from: var(--navy); --to: var(--olive)'
+      return isDay
+        ? '--from: var(--blue); --to: var(--olive)'
+        : '--from: var(--navy); --to: var(--olive)'
     default:
-      return '--from: var(--blue); --to: var(--aqua)'
+      return isDay
+        ? '--from: var(--blue); --to: var(--aqua)'
+        : '--from: var(--navy); --to: var(--blue)'
   }
 }
