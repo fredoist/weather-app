@@ -13,7 +13,7 @@
 
 ---
 
-<img src=".github/app-preview.jpg" alt="Preview" align="center" />
+<img src="preview.jpg" alt="Preview" align="center" />
 Simple Weather is a vanilla JS weather web app to try modern JavaScript and ES modules, no build step is necessary and everything works from the browser.
 The app features your local weather and fetches the data from the API using stale while revalidate technique. You can also explore or view other locations by changing the query parameter in the URL.
 
