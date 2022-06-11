@@ -1,13 +1,7 @@
 import SWR from 'https://esm.sh/vanilla-swr?pin=v85'
 import html from 'https://esm.sh/nanohtml?pin=v85'
 import rain from 'https://esm.sh/make-it-rain-js?pin=v85'
-import {
-  fetcher,
-  generateGradient,
-  render,
-  useLanguage,
-  useLocation,
-} from './utils.js'
+import { fetcher, useGradient, render, useLanguage, useLocation } from './utils.js'
 import { drizzle, rainy } from './condition-codes.js'
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -20,9 +14,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       if ([...rainy, ...drizzle].includes(current.condition.code)) {
         rain().startAnimation()
       }
-
-      const gradient = generateGradient(current.condition)
-      document.body.style = gradient
+      
+      document.body.style = useGradient(current.condition)
 
       const stats = [
         { icon: 'wind', value: `${current.wind_mph} mph` },

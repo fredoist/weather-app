@@ -80,7 +80,7 @@ export const render = app => {
  * It returns a string with the gradient stops depending on the weather condition
  * @returns {string} A string that is a CSS variable.
  */
-export const generateGradient = condition => {
+export const useGradient = condition => {
   const { code, icon } = condition
   const isDay = icon.includes('day')
 
