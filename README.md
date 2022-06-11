@@ -29,7 +29,7 @@ The app features your local weather and fetches the data from the API using stal
 
 To get started simply clone or [download ⇊](https://github.com/fredoist/simple-weather/archive/refs/heads/main.zip) this repository, no build or dependency installs is required.
 
-You can develop in local by running a local server with hot-reloading, I recommend the followind:
+You can develop in local by running a local server with hot-reloading:
 
 ```sh
 $ npx reload .
