@@ -8,19 +8,20 @@ document.addEventListener('DOMContentLoaded', async () => {
   const location = await useLocation()
   const language = await useLanguage()
   const observable = SWR(location, fetcher)
+
   observable.watch(({ data }) => {
     if (data) {
       const { location, current } = data
       if ([...rainy, ...drizzle].includes(current.condition.code)) {
         rain().startAnimation()
       }
-      
+
       document.body.style = useGradient(current.condition)
 
       const stats = [
         { icon: 'wind', value: `${current.wind_mph} mph` },
         { icon: 'humidity', value: `${current.humidity}%` },
-        { icon: 'pressure', value: `${current.pressure_in} in` },
+        { icon: 'pressure', value: `${current.pressure_in} in` }
       ]
 
       const App = html`
@@ -33,14 +34,14 @@ document.addEventListener('DOMContentLoaded', async () => {
           <time class="date" datetime="${location.localtime.split(' ')[0]}">
             ${new Date(location.localtime).toLocaleDateString(language, {
               month: 'long',
-              day: 'numeric',
+              day: 'numeric'
             })}
           </time>
           <time class="time" datetime="${location.localtime.split(' ')[1]}">
             ${new Date(location.localtime).toLocaleTimeString(language, {
               hour: 'numeric',
               minute: 'numeric',
-              hourCycle: 'h12',
+              hourCycle: 'h12'
             })}
           </time>
           <ul>

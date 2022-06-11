@@ -4,7 +4,7 @@ import {
   foggy,
   overcast,
   rainy,
-  sunny,
+  sunny
 } from './condition-codes.js'
 import { config } from './config.js'
 
@@ -27,8 +27,8 @@ export const fetcher = async location => {
     method: 'GET',
     headers: {
       'X-RapidAPI-Host': config.ApiHost,
-      'X-RapidAPI-Key': config.ApiKey,
-    },
+      'X-RapidAPI-Key': config.ApiKey
+    }
   })
   return await data.json()
 }
@@ -88,15 +88,15 @@ export const useGradient = condition => {
     case sunny.includes(code):
       return isDay
         ? '--from: var(--orange); --to: var(--yellow)'
-        : `--from: var(--navy); --to: var(--blue)`
+        : '--from: var(--navy); --to: var(--blue)'
     case rainy.includes(code) || cloudy.includes(code):
       return isDay
         ? '--from: var(--blue); --to: var(--aqua)'
-        : `--from: var(--navy); --to: var(--blue)`
+        : '--from: var(--navy); --to: var(--blue)'
     case drizzle.includes(code):
       return isDay
         ? '--from: var(--blue); --to: var(--teal)'
-        : `--from: var(--navy); --to: var(--teal)`
+        : '--from: var(--navy); --to: var(--teal)'
     case overcast.includes(code):
       return isDay
         ? '--from: var(--navy); --to: var(--teal)'
