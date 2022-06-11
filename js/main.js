@@ -11,10 +11,7 @@ import {
 import { drizzle, rainy } from './condition-codes.js'
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const location = window.location.search
-    ? new URL(window.location).searchParams.get('q')
-    : await useLocation()
-  history.pushState(null, null, `?q=${location}`)
+  const location = await useLocation()
   const language = await useLanguage()
   const observable = SWR(location, fetcher)
   observable.watch(({ data }) => {
