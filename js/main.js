@@ -1,8 +1,14 @@
 import SWR from 'https://esm.sh/vanilla-swr?pin=v85'
 import html from 'https://esm.sh/nanohtml?pin=v85'
 import rain from 'https://esm.sh/make-it-rain-js?pin=v85'
-import { fetcher, useGradient, render, useLanguage, useLocation } from './utils.js'
-import { drizzle, rainy } from './condition-codes.js'
+import {
+  fetcher,
+  useGradient,
+  render,
+  useLanguage,
+  useLocation
+} from './utils.js'
+import { conditions } from './condition-codes.js'
 
 document.addEventListener('DOMContentLoaded', async () => {
   const location = await useLocation()
@@ -12,6 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   observable.watch(({ data }) => {
     if (data) {
       const { location, current } = data
+      const { rainy, drizzle } = conditions
       if ([...rainy, ...drizzle].includes(current.condition.code)) {
         rain().startAnimation()
       }

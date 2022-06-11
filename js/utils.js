@@ -1,11 +1,4 @@
-import {
-  cloudy,
-  drizzle,
-  foggy,
-  overcast,
-  rainy,
-  sunny
-} from './condition-codes.js'
+import { conditions } from './condition-codes.js'
 import { config } from './config.js'
 
 /**
@@ -85,23 +78,23 @@ export const useGradient = condition => {
   const isDay = icon.includes('day')
 
   switch (true) {
-    case sunny.includes(code):
+    case conditions.sunny.includes(code):
       return isDay
         ? '--from: var(--orange); --to: var(--yellow)'
         : '--from: var(--navy); --to: var(--blue)'
-    case rainy.includes(code) || cloudy.includes(code):
+    case conditions.rainy.includes(code) || conditions.cloudy.includes(code):
       return isDay
         ? '--from: var(--blue); --to: var(--aqua)'
         : '--from: var(--navy); --to: var(--blue)'
-    case drizzle.includes(code):
+    case conditions.drizzle.includes(code):
       return isDay
         ? '--from: var(--blue); --to: var(--teal)'
         : '--from: var(--navy); --to: var(--teal)'
-    case overcast.includes(code):
+    case conditions.overcast.includes(code):
       return isDay
         ? '--from: var(--navy); --to: var(--teal)'
         : '--from: var(--navy); --to: var(--olive)'
-    case foggy.includes(code):
+    case conditions.foggy.includes(code):
       return isDay
         ? '--from: var(--blue); --to: var(--olive)'
         : '--from: var(--navy); --to: var(--olive)'
