@@ -1,10 +1,9 @@
-import type { VercelApiHandler } from '@vercel/node'
 import fetch from "node-fetch";
 
 const ApiHost = "weatherapi-com.p.rapidapi.com";
-const ApiKey = process.env.API_KEY as string;
+const ApiKey = process.env.API_KEY;
 
-const handler: VercelApiHandler = async (req, res) => {
+const handler = async (req, res) => {
   if (req.method !== "GET") {
     res.status(405).end("Method not allowed");
     return;
